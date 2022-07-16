@@ -23,4 +23,46 @@ public class Dice : MonoBehaviour
     {
         rb.useGravity = true;
     }
+
+    // Top: 1
+    // Left: 2
+    // Back: 3
+    // Front: 4
+    // Right: 5
+    // Bottom: 6
+    public int GetValue()
+    {
+        List<Vector3> normals = new List<Vector3>()
+        {
+            transform.up,
+            -transform.right,
+            -transform.forward,
+            transform.forward,
+            transform.right,
+            -transform.up
+        };
+
+        int winningSide = 0;
+        float winningDot = 0;
+
+
+        for(int i = 0; i < normals.Count; i++)
+        {
+            float dot = Vector3.Dot(Vector3.up, normals[i]);
+
+            if(dot == 1)
+            {
+                Debug.Log(i + 1);
+                return i + 1;
+            }
+
+            if(dot > winningDot)
+            {
+                winningDot = dot;
+                winningSide = i + 1;
+            }
+        }
+        Debug.Log(winningSide);
+        return winningSide;
+    }
 }
