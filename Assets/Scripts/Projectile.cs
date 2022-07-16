@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     [SerializeField]private GameObject player;
     [SerializeField]private int damage = -1;
     public Vector3 direction;
-    private float speed = 1f;
+    private float speed = 10f;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction.normalized * speed * Time.deltaTime);
     }
 
     void OnCollisionEnter(Collision col)

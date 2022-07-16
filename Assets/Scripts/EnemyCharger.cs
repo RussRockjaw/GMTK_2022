@@ -4,15 +4,76 @@ using UnityEngine;
 
 public class EnemyCharger : MonoBehaviour
 {
+    private GameObject body;
+    
+    [SerializeField]private GameObject player;
+    [SerializeField]private float speed;
+    [SerializeField]private float turnSpeed;
+    [SerializeField]private bool foundTarget;
+    [SerializeField]private bool isCharging;
+    [SerializeField]private bool onCooldown;
+    [SerializeField]private float cooldown;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        body = gameObject.transform.GetChild(0).gameObject;
+        player = GameObject.Find("Player");
+        StartCoroutine(ChargerOperation());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
+    }
+
+    IEnumerator ChargerOperation()
+    {
+        while(true)
+        {
+            if(!foundTarget && !isCharging && !onCooldown)
+            {
+                Vector3 dir = player.transform.position - transform.position;
+                dir.y=0;
+                Quaternion rotation = Quaternion.LookRotation(dir);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
+
+                RaycastHit hit;
+                if(Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+                {
+                    if(hit.transform.tag == "Player")
+                    {
+                        foundTarget = true;
+                        isCharging = true;
+                    }
+                }
+            }
+
+            else if(foundTarget && isCharging && !onCooldown)
+            {
+                Debug.DrawRay(transform.position, transform.forward * 30, Color.red); 
+                transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
+            }
+
+            else if(!foundTarget && !isCharging && onCooldown)
+            {
+                yield return new WaitForSecondsRealtime(cooldown);
+                onCooldown = false;
+            }
+
+            yield return null;  
+        }
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag != "Floor")
+        {
+            isCharging = false;
+            foundTarget = false;
+            onCooldown = true;
+        }
+
     }
 }
