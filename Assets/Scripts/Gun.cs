@@ -7,7 +7,6 @@ public class Gun : MonoBehaviour
     [SerializeField]private Camera cam;
     [SerializeField]private GameObject bullet;
     [SerializeField]private List<GameObject> bullets;
-    private Vector3 offset = new Vector3(0f, 0f, 0.5f);
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +27,7 @@ public class Gun : MonoBehaviour
             {
                 bullets[0].transform.position = cam.transform.position;
                 bullets[0].transform.LookAt(hit.point);
-                bullets[0].GetComponent<Bullet>().Activate();
+                bullets[0].GetComponent<Dice>().Activate();
                 bullets.RemoveAt(0);
             }
         }

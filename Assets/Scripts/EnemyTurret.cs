@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class EnemyTurret : MonoBehaviour
 {
     [SerializeField]private GameObject player;
     [SerializeField]private GameObject projectile;

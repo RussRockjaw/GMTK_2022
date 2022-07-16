@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "Bullet")
+        if(col.gameObject.tag == "Dice")
         {
             gun.Reload(col.gameObject);
         }
