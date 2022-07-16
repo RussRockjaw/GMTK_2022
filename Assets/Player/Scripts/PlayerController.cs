@@ -6,9 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]private Gun gun;
     [SerializeField]private Camera cam;
-    [SerializeField]private Rigidbody rb;
-    [SerializeField]private float force;
-    [SerializeField]private float maxSpeed;
+    [SerializeField]private int health;
+    [SerializeField]private float speed;
     [SerializeField]private float cameraSpeed;
     private float horizontalRotation, verticalRotation;
     private float vert, hori;
@@ -18,21 +17,15 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-    }
-
-    void FixedUpdate()
-    {
-        rb.AddRelativeForce(dir * force);
+        health = 20;
     }
 
     void Update()
     {
-        vert = Input.GetAxis("Vertical");
-        hori = Input.GetAxis("Horizontal");
+        vert = Input.GetAxisRaw("Vertical");
+        hori = Input.GetAxisRaw("Horizontal");
         dir = new Vector3(hori, 0, vert).normalized;
-        if(rb.velocity.magnitude > maxSpeed)
-            rb.velocity = rb.velocity.normalized * maxSpeed; 
+        transform.Translate(dir * speed * Time.deltaTime);
 
         Aim();
         if(Input.GetMouseButtonDown(0))
@@ -56,5 +49,10 @@ public class PlayerController : MonoBehaviour
         {
             gun.Reload(col.gameObject);
         }
+    }
+
+    public void UpdateHealth(int val)
+    {
+        health += val;
     }
 }

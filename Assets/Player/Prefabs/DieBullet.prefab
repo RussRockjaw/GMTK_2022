@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5338035431855087764}
   - component: {fileID: 4717562235155406171}
   - component: {fileID: 4709576919975404960}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DieBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3bae5b652983ab74aa420211e7c65ff7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,5 +127,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f33a517595be2a41ad6fb81c06a79e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 40
   rb: {fileID: 0}
