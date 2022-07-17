@@ -391,6 +391,7 @@ MonoBehaviour:
   isReloading: 0
   isShooting: 0
   ammo: []
+  isPaused: {fileID: 11400000, guid: 0b87e033c080ae643b4800195d26b781, type: 2}
 --- !u!65 &5088379572194141916
 BoxCollider:
   m_ObjectHideFlags: 0

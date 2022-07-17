@@ -57,7 +57,7 @@ public class Dice : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
-        rb.AddTorque(new Vector3(Random.Range(-1, 1),Random.Range(-1, 1),Random.Range(-1, 1)) * 1000, ForceMode.VelocityChange);
+        rb.AddTorque(new Vector3(Random.Range(-1, 1),Random.Range(-1, 1),Random.Range(-1, 1)) * 1000000, ForceMode.Impulse);
     }
 
     void OnCollisionEnter(Collision col)

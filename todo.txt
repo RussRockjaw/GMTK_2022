@@ -6,11 +6,13 @@ Kyle
 * bullets UI + values on UI
 
 Russ
-* add enemy manager restart
-* coroutines
-* grabbing dice from distance
+* add enemy manager restart --DONE--
+* coroutines --DONE--
+* grabbing dice from distance --DONE--
 
 
 
 todo
 * how to play
+* Completeing a card rewards health
+* Killing enemies gives points(mulitplies dice score?)

@@ -15,6 +15,8 @@ public class EnemyTurret : Enemy
     [SerializeField]private bool isShooting = false;
     [SerializeField]private List<GameObject> ammo;
     private Vector3 origin;
+    public ScriptableBool isPaused;
+    private Coroutine lastRoutine;
    
     void Awake()
     {
@@ -31,17 +33,19 @@ public class EnemyTurret : Enemy
         MaxHealth = totalHealth;
         Health = MaxHealth;
         player = GameObject.Find("Player");
-        StartCoroutine(TurretOperation());
+        lastRoutine = StartCoroutine(TurretOperation());
     }
 
     IEnumerator TurretOperation()
     {
         while(true)
         {
+            yield return new WaitUntil(() => !isPaused.value);
             if(isShooting && !isReloading)
             {
                 for(int i = 0; i < ammo.Count; i++)
                 {
+                    ammo[i].transform.position = origin;
                     ammo[i].GetComponent<Projectile>().SetDirection(player.transform.position - origin);
                     ammo[i].SetActive(true);
                     yield return new WaitForSecondsRealtime(fireRate / burstSize);
@@ -72,7 +76,7 @@ public class EnemyTurret : Enemy
         origin = transform.position + new Vector3(0f, 0.5f, 0f);
         if(Health <= 0)
         {
-            StopCoroutine(TurretOperation());
+            StopCoroutine(lastRoutine);
             this.Kill();
         } 
         //Track player
@@ -90,8 +94,18 @@ public class EnemyTurret : Enemy
             }
     }
 
-    public override void Reset()
+    public override void Resume()
     {
-        StartCoroutine(TurretOperation());
+        lastRoutine = StartCoroutine(TurretOperation());
+    }
+
+    public override void Delete()
+    {
+        for(int i = ammo.Count - 1; i >= 0; i--)
+        {
+            Destroy(ammo[i]);
+        }
+        ammo.Clear();
+        Destroy(this.gameObject);
     }
 }

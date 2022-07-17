@@ -55,6 +55,7 @@ MonoBehaviour:
   isCharging: 0
   onCooldown: 0
   cooldown: 1
+  isPaused: {fileID: 11400000, guid: 0b87e033c080ae643b4800195d26b781, type: 2}
 --- !u!54 &905742677944506862
 Rigidbody:
   m_ObjectHideFlags: 0

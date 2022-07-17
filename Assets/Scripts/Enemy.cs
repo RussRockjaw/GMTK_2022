@@ -18,8 +18,13 @@ public abstract class Enemy : MonoBehaviour
         Health = MaxHealth;
     }
 
-    public virtual void Reset()
+    public virtual void Resume()
     {
         
+    }
+
+    public virtual void Delete()
+    {
+        Destroy(this.gameObject);
     }
 }

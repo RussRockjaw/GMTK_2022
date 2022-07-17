@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI healthText;
     public List<TextMeshProUGUI> diceUI;
+
+    public EnemyManager em;
     
     void Start()
     {
@@ -73,7 +75,12 @@ public class PlayerController : MonoBehaviour
                 if(d != null)
                     dice.Add(d);
             }
-        } 
+        }
+
+        if(Input.GetKeyDown("l"))
+        {
+            em.Restart();
+        }
 
 
         // check if we are looking at dice and if they are close enough to pick up
@@ -81,7 +88,7 @@ public class PlayerController : MonoBehaviour
         if(Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit))
         {
             // TODO/feature: highlight the selected dice somehow?
-            if(hit.collider.gameObject.tag == "Dice" && Input.GetKeyDown("e") && hit.distance <= pickupDistance)
+            if(hit.collider.gameObject.tag == "Dice" && Input.GetKeyDown("e"))
                 PickUpDice(hit.collider.gameObject);
         }
 

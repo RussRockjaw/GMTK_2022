@@ -39,7 +39,6 @@ public class Gun : MonoBehaviour
     public void Reload(GameObject bullet)
     {
         bullet.transform.rotation = Quaternion.identity;
-        
         bullets.Add(bullet);
         bullet.SetActive(false);
         bullet.GetComponent<Rigidbody>().useGravity = false;

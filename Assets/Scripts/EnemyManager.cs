@@ -12,9 +12,47 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]private int maxEnemies = 20;
     [SerializeField]private float spawnInterval = 5;
     public ScriptableBool isPaused;
+    Coroutine lastRoutine;
 
     // Start is called before the first frame update
     void Awake()
+    {
+        GenerateEnemies();
+    }
+
+    void Start()
+    {
+        lastRoutine = StartCoroutine(SpawnEnemies());
+    }
+
+    //destroys current enemies and generates a fresh list of enemies
+    public void Restart()
+    {
+        StopCoroutine(lastRoutine);
+        for(int i = deadEnemies.Count-1; i >= 0; i--)
+        {
+            deadEnemies[i].SetActive(true);
+            deadEnemies[i].GetComponent<Enemy>().Delete();
+        }
+        deadEnemies.Clear();
+
+        for(int i = liveEnemies.Count-1; i >= 0; i--)
+        {
+            liveEnemies[i].SetActive(true);
+            liveEnemies[i].GetComponent<Enemy>().Delete();
+        }
+        liveEnemies.Clear();
+
+        GenerateEnemies();
+    }
+
+    //Call this when you are ready to have the manager resume functions after a game reset
+    public void Resume()
+    {
+        lastRoutine = StartCoroutine(SpawnEnemies());
+    }
+
+    private void GenerateEnemies()
     {
         for(int i = 0; i < maxEnemies; i++)
         {
@@ -30,11 +68,6 @@ public class EnemyManager : MonoBehaviour
                 deadEnemies[i].SetActive(false);
             }
         }
-    }
-
-    void Start()
-    {
-        StartCoroutine(SpawnEnemies());
     }
 
     IEnumerator SpawnEnemies()
@@ -65,7 +98,7 @@ public class EnemyManager : MonoBehaviour
                     deadEnemies[r].GetComponent<Enemy>().Respawn(pos);
                     deadEnemies[r].SetActive(true);
                     liveEnemies.Add(deadEnemies[r]);
-                    deadEnemies[r].GetComponent<Enemy>().Reset();
+                    deadEnemies[r].GetComponent<Enemy>().Resume();
                     deadEnemies.RemoveAt(r);
                 }
             }

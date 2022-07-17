@@ -8,12 +8,15 @@ public class EnemyCharger : Enemy
 
     [SerializeField]private GameObject player;
     [SerializeField]private int health;
+    [SerializeField]private int damage = -1;
     [SerializeField]private float speed;
     [SerializeField]private float turnSpeed;
     [SerializeField]private bool foundTarget;
     [SerializeField]private bool isCharging;
     [SerializeField]private bool onCooldown;
     [SerializeField]private float cooldown;
+    public ScriptableBool isPaused;
+    private Coroutine lastRoutine;
 
     void Awake()
     {
@@ -26,7 +29,7 @@ public class EnemyCharger : Enemy
         MaxHealth = 2;
         Health = MaxHealth;
         body = gameObject.transform.GetChild(0).gameObject;
-        StartCoroutine(ChargerOperation());
+        lastRoutine = StartCoroutine(ChargerOperation());
     }
 
     // Update is called once per frame
@@ -34,15 +37,16 @@ public class EnemyCharger : Enemy
     {
        if(Health <= 0)
        {
-            StopCoroutine(ChargerOperation());
+            StopCoroutine(lastRoutine);
             this.Kill();
        }  
     }
 
     IEnumerator ChargerOperation()
-    {
+    {  
         while(true)
         {
+            yield return new WaitUntil(() => !isPaused.value);
             if(!foundTarget && !isCharging && !onCooldown)
             {
                 Vector3 dir = player.transform.position - transform.position;
@@ -86,10 +90,15 @@ public class EnemyCharger : Enemy
             onCooldown = true;
         }
 
+        if(col.gameObject.tag == "Player")
+        {
+            player.GetComponent<PlayerController>().UpdateHealth(damage);
+        }
+
     }
 
-    public override void Reset()
+    public override void Resume()
     {
-        StartCoroutine(ChargerOperation());
+        lastRoutine = StartCoroutine(ChargerOperation());
     }
 }
