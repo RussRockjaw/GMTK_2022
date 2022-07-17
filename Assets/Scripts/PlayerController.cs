@@ -354,6 +354,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void TurnOffAllCheckmarks()
+    {
+        foreach(GameObject g in checkMarks)
+            g.SetActive(false);
+    }
+
     public void UpdateHealthText()
     {
         healthText.text = $"Health: {health}/{maxhealth}";
@@ -391,6 +397,7 @@ public class PlayerController : MonoBehaviour
         shahtzee = new Shahtzee();
         gameStarted = true;
         UnPause();
+        TurnOffAllCheckmarks();
     }
 
     public void ResetGame()
@@ -400,6 +407,7 @@ public class PlayerController : MonoBehaviour
         Respawn();
         shahtzee = new Shahtzee();
         PickUpAllDice();
+        TurnOffAllCheckmarks();
     }
     public void Quit()
     {
