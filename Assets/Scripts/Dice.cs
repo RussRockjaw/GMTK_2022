@@ -6,6 +6,7 @@ public class Dice : MonoBehaviour
 {
     [SerializeField]private float speed;
     [SerializeField]Rigidbody rb;
+    [SerializeField]private int damage;
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,6 +23,10 @@ public class Dice : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         rb.useGravity = true;
+        if(col.gameObject.tag == "Enemy")
+        {
+            col.gameObject.GetComponent<Enemy>().Health -= damage;
+        }
     }
 
     // Top: 1

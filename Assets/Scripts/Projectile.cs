@@ -6,8 +6,8 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField]private GameObject player;
     [SerializeField]private int damage = -1;
-    public Vector3 direction;
-    private float speed = 10f;
+    private Vector3 direction;
+    private float speed = 20f;
 
     // Start is called before the first frame update
     void Awake()

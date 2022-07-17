@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCharger : MonoBehaviour
+public class EnemyCharger : Enemy
 {
     private GameObject body;
-    
+
     [SerializeField]private GameObject player;
+    [SerializeField]private int health;
     [SerializeField]private float speed;
     [SerializeField]private float turnSpeed;
     [SerializeField]private bool foundTarget;
@@ -14,18 +15,28 @@ public class EnemyCharger : MonoBehaviour
     [SerializeField]private bool onCooldown;
     [SerializeField]private float cooldown;
 
+    void Awake()
+    {
+        player = GameObject.Find("Player");
+    }
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        //player = GameObject.Find("Player");
+        MaxHealth = 2;
+        Health = MaxHealth;
         body = gameObject.transform.GetChild(0).gameObject;
-        player = GameObject.Find("Player");
         StartCoroutine(ChargerOperation());
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+       if(Health <= 0)
+       {
+            StopCoroutine(ChargerOperation());
+            this.Kill();
+       }  
     }
 
     IEnumerator ChargerOperation()
@@ -75,5 +86,10 @@ public class EnemyCharger : MonoBehaviour
             onCooldown = true;
         }
 
+    }
+
+    public override void Reset()
+    {
+        StartCoroutine(ChargerOperation());
     }
 }
