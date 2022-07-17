@@ -890,8 +890,8 @@ MonoBehaviour:
   m_text: "Move: WASD\nLook: Mouse\nPause/Scorecard: Space\nShoot: Left Click\nPickup:
     E\n\n- Shoot enemies to survive\n   and roll your dice\n\n- Play Yahtzee to score
     points\n   (hit space to bring up score card)\n\n- Your 5 dice is your ammo\n\n-
-    Pick the dice back up to reload\n    and re-roll\n\n- \"Most\" Yahtzee rules
-    apply\n\n- Don't forget to put your name \n   on your score card :)"
+    Pick the dice back up to reload\n    and re-roll\n\n- Most Yahtzee rules apply\n\n-
+    Don't forget to put your name \n   on your score card :)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5262,7 +5262,7 @@ Transform:
   - {fileID: 1629917522959981466}
   - {fileID: 499723214}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1629917522647762503
 GameObject:
@@ -5746,7 +5746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8335075951803228019
 RectTransform:
   m_ObjectHideFlags: 0
