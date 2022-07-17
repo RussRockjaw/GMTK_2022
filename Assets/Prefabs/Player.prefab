@@ -43,8 +43,8 @@ Camera:
   m_GameObject: {fileID: 7291793760172124639}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -118,7 +118,7 @@ Transform:
   m_Children:
   - {fileID: 7291793760172124636}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7291793760980765018
 BoxCollider:
@@ -147,11 +147,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 7291793761986064396}
   cam: {fileID: 7291793760172124634}
+  maxhealth: 20
   health: 20
-  speed: 5
-  cameraSpeed: 0.3
+  speed: 10
+  cameraSpeed: 0.5
+  spawnPoint: {fileID: 0}
   isPaused: {fileID: 11400000, guid: 0b87e033c080ae643b4800195d26b781, type: 2}
-  pickupDistance: 3
+  pickupDistance: 5
   score: 0
   pauseMenu: {fileID: 0}
   checkMarks:
@@ -168,7 +170,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  playerName: 
+  gameStarted: 0
   scoreText: {fileID: 0}
+  nameText: {fileID: 0}
+  healthText: {fileID: 0}
+  diceUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!54 &-1738287310301008883
 Rigidbody:
   m_ObjectHideFlags: 0

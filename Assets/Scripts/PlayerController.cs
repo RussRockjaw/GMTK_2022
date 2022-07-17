@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private float vert, hori;
     private Vector3 dir;
     private List<Dice> dice;
+    private StateManager sm;
 
     public GameObject spawnPoint;
     public ScriptableBool isPaused;
@@ -23,10 +24,13 @@ public class PlayerController : MonoBehaviour
     public int score = 0;
     public GameObject pauseMenu;
     public List<GameObject> checkMarks;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI nameText;
     public string playerName;
     public bool gameStarted;
+
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI healthText;
+    public List<TextMeshProUGUI> diceUI;
     
     void Start()
     {
@@ -79,6 +83,14 @@ public class PlayerController : MonoBehaviour
             // TODO/feature: highlight the selected dice somehow?
             if(hit.collider.gameObject.tag == "Dice" && Input.GetKeyDown("e") && hit.distance <= pickupDistance)
                 PickUpDice(hit.collider.gameObject);
+        }
+
+        for(int i = 0; i < diceUI.Count; i++)
+        {
+            if(i < dice.Count)
+                diceUI[i].text = dice[i].GetValue().ToString();
+            else
+                diceUI[i].text = "";
         }
     }
 
@@ -320,9 +332,10 @@ public class PlayerController : MonoBehaviour
     public void UpdateHealth(int val)
     {
         health += val;
+        healthText.text = $"Health: {health}/{maxhealth}";
         if(health <= 0)
         {
-            // TODO/incomplete: we are dead here, spawn death screen and restart game
+            GameOver();
         }
     }
 
@@ -337,6 +350,13 @@ public class PlayerController : MonoBehaviour
         nameText.text = s;
     }
 
+    public void GameOver()
+    {
+        Pause();
+        gameStarted = false;
+        // spawn the death screen, showing score and a button to restart game
+    }
+
     public void ResetGame()
     {
         score = 0;
@@ -345,5 +365,10 @@ public class PlayerController : MonoBehaviour
         Respawn();
         shahtzee = new Shahtzee();
         PickUpAllDice();
+        UnPause();
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
