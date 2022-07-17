@@ -933,8 +933,8 @@ MonoBehaviour:
   spawnArea: 20
   deadEnemies: []
   liveEnemies: []
-  maxEnemies: 10
-  spawnInterval: 3
+  maxEnemies: 5
+  spawnInterval: 5
   isPaused: {fileID: 11400000, guid: 0b87e033c080ae643b4800195d26b781, type: 2}
 --- !u!4 &348132532
 Transform:
@@ -3800,15 +3800,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1316789504}
-    - target: {fileID: 499420106, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
-      propertyPath: m_text
-      value: "Move: WASD\nLook: Mouse\nPause/Scorecard: Space\nShoot: Left Click\nPickup:
-        E\n\n- Shoot enemies to survive\n   and roll your dice\n\n- Play Yahtzee
-        to score points\n   (hit space to bring up score card)\n\n- Your 5 dice is
-        your ammo\n\n- Pick the dice back up to reload\n    and re-roll\n\n- Most
-        Yahtzee rules apply\n\n- Don't forget to put your name \n   on your score
-        card :)"
-      objectReference: {fileID: 0}
     - target: {fileID: 935040500, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3907,10 +3898,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1629917522517685845, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2276985556206887981, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7261722579847434732, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}

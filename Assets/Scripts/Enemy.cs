@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     public int Health{get; set;}
-    public int MaxHealth{get; set;}
+    public int MaxHealth = 1;
     
     public void Kill()
     {

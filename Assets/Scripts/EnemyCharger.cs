@@ -26,7 +26,6 @@ public class EnemyCharger : Enemy
     void Start()
     {   
         //player = GameObject.Find("Player");
-        MaxHealth = 2;
         Health = MaxHealth;
         body = gameObject.transform.GetChild(0).gameObject;
         lastRoutine = StartCoroutine(ChargerOperation());
