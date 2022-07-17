@@ -384,8 +384,8 @@ MonoBehaviour:
   player: {fileID: 0}
   projectile: {fileID: 4715453513359209114, guid: ca388bb3552709f42b9d9e8f7c5a010a, type: 3}
   totalHealth: 1
-  fireRate: 2
-  burstSize: 10
+  fireRate: 3
+  burstSize: 3
   turnRate: 10
   reloadDelay: 2.5
   isReloading: 0

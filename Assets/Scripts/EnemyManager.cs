@@ -57,16 +57,18 @@ public class EnemyManager : MonoBehaviour
         for(int i = 0; i < maxEnemies; i++)
         {
             int r = Random.Range(0, 2);
+            GameObject e = null;
             if(r == 0)
             {
-                deadEnemies.Add(Instantiate(turretPrefab, new Vector3(0, 0, 0), Quaternion.identity));
-                deadEnemies[i].SetActive(false);
+                e = Instantiate(turretPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             }
             else if(r == 1)
             {
-                deadEnemies.Add(Instantiate(chargerPrefab, new Vector3(0, 0, 0), Quaternion.identity));
-                deadEnemies[i].SetActive(false);
+                e = Instantiate(chargerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             }
+
+            deadEnemies.Add(e);
+            e.SetActive(false);
         }
     }
 

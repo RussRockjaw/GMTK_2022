@@ -1,9 +1,9 @@
 
 Kyle
-* add health to UI
-* add player death, pauses game, spawns death screen
-* death screen with restart button
-* bullets UI + values on UI
+* add health to UI --DONE--
+* add player death, pauses game, spawns death screen --DONE--
+* death screen with restart button --DONE--
+* bullets UI + values on UI --DONE--
 
 Russ
 * add enemy manager restart --DONE--
@@ -13,6 +13,6 @@ Russ
 
 
 todo
-* how to play
-* Completeing a card rewards health
+* how to play --DONE--
+* Completeing a card rewards health --DONE--
 * Killing enemies gives points(mulitplies dice score?)

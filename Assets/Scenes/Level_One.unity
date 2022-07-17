@@ -934,7 +934,7 @@ MonoBehaviour:
   deadEnemies: []
   liveEnemies: []
   maxEnemies: 10
-  spawnInterval: 1
+  spawnInterval: 3
   isPaused: {fileID: 11400000, guid: 0b87e033c080ae643b4800195d26b781, type: 2}
 --- !u!4 &348132532
 Transform:
@@ -1142,6 +1142,11 @@ Transform:
   m_Father: {fileID: 632846221}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &528479343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 528479343, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
+  m_PrefabInstance: {fileID: 1813838865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &561272935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1301,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8724954673478888989, guid: 4ca33ca1bd9e38b41878bc56de0add67, type: 3}
+      propertyPath: em
+      value: 
+      objectReference: {fileID: 348132531}
+    - target: {fileID: 8724954673478888989, guid: 4ca33ca1bd9e38b41878bc56de0add67, type: 3}
       propertyPath: gameUI
       value: 
       objectReference: {fileID: 1813838870}
@@ -1311,6 +1320,10 @@ PrefabInstance:
       propertyPath: nameText
       value: 
       objectReference: {fileID: 1813838869}
+    - target: {fileID: 8724954673478888989, guid: 4ca33ca1bd9e38b41878bc56de0add67, type: 3}
+      propertyPath: gameOverUI
+      value: 
+      objectReference: {fileID: 528479343}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ca33ca1bd9e38b41878bc56de0add67, type: 3}
@@ -2381,6 +2394,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7291793760980765016, guid: 608515ba2c3b50040b1127b3485f33aa, type: 3}
+      propertyPath: sm
+      value: 
+      objectReference: {fileID: 579532442}
+    - target: {fileID: 7291793760980765016, guid: 608515ba2c3b50040b1127b3485f33aa, type: 3}
       propertyPath: nameText
       value: 
       objectReference: {fileID: 1813838866}
@@ -2400,6 +2417,10 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1657304055}
+    - target: {fileID: 7291793760980765016, guid: 608515ba2c3b50040b1127b3485f33aa, type: 3}
+      propertyPath: pickupDistance
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7291793760980765016, guid: 608515ba2c3b50040b1127b3485f33aa, type: 3}
       propertyPath: diceUI.Array.data[0]
       value: 
@@ -3763,10 +3784,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1316789504}
-    - target: {fileID: 415665858, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
+    - target: {fileID: 233592980, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1316789504}
+    - target: {fileID: 415665858, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 579532442}
     - target: {fileID: 418253930, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3779,6 +3804,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1316789504}
+    - target: {fileID: 1002165046, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 579532442}
     - target: {fileID: 1033747179, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3795,6 +3824,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1316789504}
+    - target: {fileID: 1427616813, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 579532442}
     - target: {fileID: 1449307311, guid: cc80b525ee37de5499be0e235a1a1a73, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

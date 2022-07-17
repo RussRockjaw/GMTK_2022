@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using UnityEngine;
 
 
 //
@@ -190,11 +191,14 @@ public class Shahtzee
         completedCategories[(int)ScoreTypes.SmallStraight] = true;
 
         List<int> list = new HashSet<int>(dice).ToList();
+        list.Sort();
 
         string s = "";
 
         foreach(int d in list)
             s += d.ToString();
+
+        Debug.Log(s);
 
         if(s.Contains("1234") || s.Contains("2345") || s.Contains("3456"))
             return 30;
@@ -209,6 +213,7 @@ public class Shahtzee
         completedCategories[(int)ScoreTypes.LargeStraight] = true;
 
         List<int> list = new HashSet<int>(dice).ToList();
+        list.Sort();
 
         string s = "";
 

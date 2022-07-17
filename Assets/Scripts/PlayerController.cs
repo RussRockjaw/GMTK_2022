@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
@@ -15,7 +16,8 @@ public class PlayerController : MonoBehaviour
     private float vert, hori;
     private Vector3 dir;
     private List<Dice> dice;
-    private StateManager sm;
+    public StateManager sm;
+    public EnemyManager em;
 
     public GameObject spawnPoint;
     public ScriptableBool isPaused;
@@ -31,16 +33,9 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI healthText;
     public List<TextMeshProUGUI> diceUI;
-
-    public EnemyManager em;
     
     void Start()
     {
-        Respawn();
-        UpdateScore();
-        health = maxhealth;
-        dice = new List<Dice>();
-        shahtzee = new Shahtzee();
         Pause();
         pauseMenu.SetActive(false);
         gameStarted = false;
@@ -77,27 +72,38 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown("l"))
-        {
-            em.Restart();
-        }
-
-
         // check if we are looking at dice and if they are close enough to pick up
         RaycastHit hit;
         if(Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit))
         {
             // TODO/feature: highlight the selected dice somehow?
-            if(hit.collider.gameObject.tag == "Dice" && Input.GetKeyDown("e"))
-                PickUpDice(hit.collider.gameObject);
+            //               or even better, highlight the UI its connected to
+            if(hit.collider.gameObject.tag == "Dice")
+            {
+                if(Input.GetKeyDown("e") && hit.distance <= pickupDistance)
+                {
+                    PickUpDice(hit.collider.gameObject);
+                }
+            }
         }
 
         for(int i = 0; i < diceUI.Count; i++)
         {
+            diceUI[i].transform.parent.gameObject.GetComponent<Image>().color = Color.white;
+
             if(i < dice.Count)
+            {
                 diceUI[i].text = dice[i].GetValue().ToString();
+
+                if(dice[i].gameObject == hit.collider.gameObject)
+                {
+                    diceUI[i].transform.parent.gameObject.GetComponent<Image>().color = Color.red;
+                }
+            }
             else
+            {
                 diceUI[i].text = "";
+            }
         }
     }
 
@@ -326,6 +332,8 @@ public class PlayerController : MonoBehaviour
         {
             AddToScore(shahtzee.cardBonus);
             shahtzee.NewCard();
+            health = maxhealth;
+            UpdateHealthText();
             foreach(GameObject g in checkMarks)
                 g.SetActive(false);
         }
@@ -339,17 +347,24 @@ public class PlayerController : MonoBehaviour
     public void UpdateHealth(int val)
     {
         health += val;
-        healthText.text = $"Health: {health}/{maxhealth}";
+        UpdateHealthText();
         if(health <= 0)
         {
             GameOver();
         }
     }
 
+    public void UpdateHealthText()
+    {
+        healthText.text = $"Health: {health}/{maxhealth}";
+    }
+
     public void Respawn()
     {
         transform.position = spawnPoint.transform.position;
-        transform.rotation = Quaternion.identity;
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+        health = maxhealth;
+        UpdateHealthText();
     }
 
     public void SetPlayerName(string s)
@@ -360,19 +375,31 @@ public class PlayerController : MonoBehaviour
     public void GameOver()
     {
         Pause();
+        pauseMenu.SetActive(false);
         gameStarted = false;
+        sm.GameOver();
         // spawn the death screen, showing score and a button to restart game
+    }
+
+    public void StartGame()
+    {
+        Respawn();
+        UpdateScore();
+        health = maxhealth;
+        UpdateHealthText();
+        dice = new List<Dice>();
+        shahtzee = new Shahtzee();
+        gameStarted = true;
+        UnPause();
     }
 
     public void ResetGame()
     {
         score = 0;
-        health = maxhealth;
         UpdateScore();
         Respawn();
         shahtzee = new Shahtzee();
         PickUpAllDice();
-        UnPause();
     }
     public void Quit()
     {
