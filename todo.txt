@@ -1,0 +1,16 @@
+
+Kyle
+* add health to UI
+* add player death, pauses game, spawns death screen
+* death screen with restart button
+* bullets UI + values on UI
+
+Russ
+* add enemy manager restart
+* coroutines
+* grabbing dice from distance
+
+
+
+todo
+* how to play

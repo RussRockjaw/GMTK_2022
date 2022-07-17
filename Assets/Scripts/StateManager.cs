@@ -25,6 +25,7 @@ public class StateManager : MonoBehaviour
 
     public void StartGame()
     {
+        player.gameStarted = true;
         gameUI.SetActive(true);
         player.UnPause();
         titleUI.SetActive(false);

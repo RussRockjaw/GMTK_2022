@@ -104,42 +104,42 @@ public class Shahtzee
     public int Aces(List<int> dice)
     {
         completedCategories[(int)ScoreTypes.Aces] = true;
-        return AddAllThatMatchNum(dice, 1);
+        return AddAllThatMatchNum(dice, 1) * 1;
     }
 
     // add up all twos
     public int Twos(List<int> dice)
     {
         completedCategories[(int)ScoreTypes.Twos] = true;
-        return AddAllThatMatchNum(dice, 2);
+        return AddAllThatMatchNum(dice, 2) * 2;
     }
 
     // add up all threes
     public int Threes(List<int> dice)
     {
         completedCategories[(int)ScoreTypes.Threes] = true;
-        return AddAllThatMatchNum(dice, 3);
+        return AddAllThatMatchNum(dice, 3) * 3;
     }
 
     // add up all fours
     public int Fours(List<int> dice)
     {
         completedCategories[(int)ScoreTypes.Fours] = true;
-        return AddAllThatMatchNum(dice, 4);
+        return AddAllThatMatchNum(dice, 4) * 4;
     }
 
     // add up all fives
     public int Fives(List<int> dice)
     {
         completedCategories[(int)ScoreTypes.Fives] = true;
-        return AddAllThatMatchNum(dice, 5);
+        return AddAllThatMatchNum(dice, 5) * 5;
     }
 
     // add up all sixes
     public int Sixes(List<int> dice)
     {
         completedCategories[(int)ScoreTypes.Sixes] = true;
-        return AddAllThatMatchNum(dice, 6);
+        return AddAllThatMatchNum(dice, 6) * 6;
     }
 
     // three matching dice

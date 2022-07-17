@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI nameText;
     public string playerName;
+    public bool gameStarted;
     
     void Start()
     {
@@ -36,12 +37,13 @@ public class PlayerController : MonoBehaviour
         shahtzee = new Shahtzee();
         Pause();
         pauseMenu.SetActive(false);
+        gameStarted = false;
     }
 
     void Update()
     {
         // cash in dice if all dice are on the ground
-        if(Input.GetKeyDown("space") || Input.GetKeyDown("escape") || Input.GetKeyDown("r"))
+        if(gameStarted && (Input.GetKeyDown("space") || Input.GetKeyDown("escape")))
         {
             if(isPaused.value)
                 UnPause();

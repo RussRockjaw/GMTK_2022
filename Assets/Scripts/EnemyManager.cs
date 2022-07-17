@@ -11,6 +11,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]private List<GameObject> liveEnemies;
     [SerializeField]private int maxEnemies = 20;
     [SerializeField]private float spawnInterval = 5;
+    public ScriptableBool isPaused;
 
     // Start is called before the first frame update
     void Awake()
@@ -39,7 +40,7 @@ public class EnemyManager : MonoBehaviour
     IEnumerator SpawnEnemies()
     {
         //Add pause and game over checks here
-        //yield return new WaitUnil(() => !isPause);
+        yield return new WaitUntil(() => !isPaused.value);
         while(true)
         {
             if(liveEnemies.Count > 0)
