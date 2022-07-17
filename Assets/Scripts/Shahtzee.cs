@@ -54,8 +54,13 @@ public class Shahtzee
         completedCategories = new bool[Enum.GetNames(typeof(ScoreTypes)).Length];
     }
 
-    public void IsCurrentCardComplete()
+    public bool IsCurrentCardComplete()
     {
+        foreach(bool b in completedCategories)
+        {
+            if(!b) return false;
+        }
+        return true;
     }
 
     public int Bonus()
@@ -233,5 +238,10 @@ public class Shahtzee
                 return AddAll(dice);
 
         return 0;
+    }
+
+    public bool IsComplete(ScoreTypes s)
+    {
+        return (completedCategories[(int)s]);
     }
 }

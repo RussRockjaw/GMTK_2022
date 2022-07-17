@@ -118,7 +118,7 @@ Transform:
   m_Children:
   - {fileID: 7291793760172124636}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7291793760980765018
 BoxCollider:
@@ -150,6 +150,25 @@ MonoBehaviour:
   health: 20
   speed: 5
   cameraSpeed: 0.3
+  isPaused: {fileID: 11400000, guid: 0b87e033c080ae643b4800195d26b781, type: 2}
+  pickupDistance: 3
+  score: 0
+  pauseMenu: {fileID: 0}
+  checkMarks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  scoreText: {fileID: 0}
 --- !u!54 &-1738287310301008883
 Rigidbody:
   m_ObjectHideFlags: 0
